@@ -71,8 +71,8 @@ class NNetLanguageIdentifier {
     std::vector<SpanInfo> byte_ranges;
 
     // Probability of every language, indexed as GetLanguageName: the softmax
-    // whose maximum is |probability|. Empty when the network is not run (e.g.
-    // text without enough valid bytes).
+    // whose maximum is |probability|. Set by FindLanguage; empty for "und" and
+    // for the results of FindTopNMostFreqLangs, which merge several spans.
     std::vector<float> probabilities;
   };
 
