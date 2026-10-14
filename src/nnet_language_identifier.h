@@ -69,6 +69,11 @@ class NNetLanguageIdentifier {
 
     // Specifies the byte ranges that |language| applies to.
     std::vector<SpanInfo> byte_ranges;
+
+    // Probability of every language, indexed as GetLanguageName: the softmax
+    // whose maximum is |probability|. Empty when the network is not run (e.g.
+    // text without enough valid bytes).
+    std::vector<float> probabilities;
   };
 
   NNetLanguageIdentifier();

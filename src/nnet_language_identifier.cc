@@ -257,6 +257,10 @@ NNetLanguageIdentifier::Result NNetLanguageIdentifier::FindLanguageOfValidUTF8(
   }
   const float log_sum_exp = max_val + log(diff_sum);
   result.probability = exp(max_val - log_sum_exp);
+  result.probabilities.reserve(scores.size());
+  for (size_t i = 0; i < scores.size(); ++i) {
+    result.probabilities.push_back(exp(scores[i] - log_sum_exp));
+  }
 
   result.language = GetLanguageName(prediction_id);
   result.is_reliable = ResultIsReliable(result.language, result.probability);

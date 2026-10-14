@@ -38,6 +38,8 @@ PYBIND11_MODULE(pybind_ext, py_module) {
                      &NNetLanguageIdentifier::Result::probability)
       .def_readwrite("is_reliable",
                      &NNetLanguageIdentifier::Result::is_reliable)
-      .def_readwrite("proportion", &NNetLanguageIdentifier::Result::proportion);
+      .def_readwrite("proportion", &NNetLanguageIdentifier::Result::proportion)
+      .def_readwrite("probabilities",
+                     &NNetLanguageIdentifier::Result::probabilities);
 }
 }  // namespace pybind11
